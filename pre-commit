@@ -28,9 +28,17 @@ else
   formatStatus=$?
   if [[ "$formatStatus" = 0 ]]; then
     echo "Format completed, continue commit"
+    git add .
+    gitAddCommand=$?
+    if [[ "$gitAddCommand" = 0 ]]; then
+      echo "git add completed"
+    else
+      echo "Error in git add, added manually!!"
+      exit 1
+    fi
     exit 0
   else
-      echo "Auto formating failed. Manual fix needed..."
+      echo "Auto formatting failed. Manual fix needed..."
       exit 1
   fi
 fi
