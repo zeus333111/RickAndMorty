@@ -27,12 +27,14 @@ allprojects {
     }
 }
 
-tasks.register("setGitHooks") {
+task("setGitHooks") {
     copy {
         from("pre-commit")
         into(".git/hooks")
     }
 }
+
+tasks["setGitHooks"]
 
 tasks.register("clean", Delete::class) {
     delete(rootProject.buildDir)

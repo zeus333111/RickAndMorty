@@ -8,8 +8,8 @@ if [ -z "$CHANGED_FILES" ]; then
     exit 0
 fi;
 
-echo "Running ktlint over these files:"
-echo "$CHANGED_FILES"
+echo "Running ktlint over ${#CHANGED_FILES[@]} files"
+##echo "${#CHANGED_FILES}"
 
 diff=.git/unstaged-ktlint-git-hook.diff
 git diff --color=never > $diff
@@ -17,14 +17,22 @@ if [ -s $diff ]; then
   git apply -R $diff
 fi
 
-./gradlew ktlintCheck -PinternalKtlintGitFilter="$CHANGED_FILES"
+./gradlew -q ktlintCheck -PinternalKtlintGitFilter="$CHANGED_FILES"
 gradleCommandExitCode=$?
 
 if [[ "$gradleCommandExitCode" = 0 ]]; then
-  echo "Sin errores de formato"
+  echo "No formatting issues found"
 else
-  echo "Errores de formato encontrados commit no hecho"
-  exit 1
+  echo "Formatting issues were detected, trying to fix them."
+  ./gradlew ktlintFormat
+  formatStatus=$?
+  if [["$formatStatus" = 0]]; then
+    echo "Format completed, continue commit"
+    exit 0
+  else
+      echo "Auto formating failed. Manual fix needed..."
+      exit 1
+  fi
 fi
 
 if [ -s $diff ]; then

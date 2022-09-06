@@ -1,6 +1,6 @@
-package com.zeus.rickandmorty
+package com.zeus.remoteapollo
 
-import junit.framework.TestCase.assertEquals
+import junit.framework.Assert.assertEquals
 import org.junit.Test
 
 /**
