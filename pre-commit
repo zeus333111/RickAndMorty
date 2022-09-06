@@ -17,16 +17,16 @@ if [ -s $diff ]; then
   git apply -R $diff
 fi
 
-./gradlew -q ktlintCheck -PinternalKtlintGitFilter="$CHANGED_FILES"
+./gradlew -w ktlintCheck -PinternalKtlintGitFilter="$CHANGED_FILES"
 gradleCommandExitCode=$?
 
 if [[ "$gradleCommandExitCode" = 0 ]]; then
   echo "No formatting issues found"
 else
   echo "Formatting issues were detected, trying to fix them."
-  ./gradlew ktlintFormat
+  ./gradlew -q ktlintFormat
   formatStatus=$?
-  if [["$formatStatus" = 0]]; then
+  if [[ "$formatStatus" = 0 ]]; then
     echo "Format completed, continue commit"
     exit 0
   else
