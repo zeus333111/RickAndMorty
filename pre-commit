@@ -8,7 +8,7 @@ if [ -z "$CHANGED_FILES" ]; then
     exit 0
 fi;
 
-echo "Running ktlint over ${#CHANGED_FILES[@]} files"
+echo "Running ktlint over ${#CHANGED_FILES[@]} files."
 ##echo "${#CHANGED_FILES}"
 
 diff=.git/unstaged-ktlint-git-hook.diff
@@ -21,22 +21,21 @@ fi
 gradleCommandExitCode=$?
 
 if [[ "$gradleCommandExitCode" = 0 ]]; then
-  echo "No formatting issues found"
+  echo "No formatting issues found."
 else
   echo "Formatting issues were detected, trying to fix them."
   ./gradlew -q ktlintFormat
   formatStatus=$?
   if [[ "$formatStatus" = 0 ]]; then
-    echo "Format completed, continue commit"
+    echo "Format completed, continue commit."
     git add .
     gitAddCommand=$?
     if [[ "$gitAddCommand" = 0 ]]; then
-      echo "git add completed"
+      echo "git add completed."
     else
       echo "Error in git add, added manually!!"
       exit 1
     fi
-    exit 0
   else
       echo "Auto formatting failed. Manual fix needed..."
       exit 1
@@ -50,5 +49,5 @@ rm $diff
 unset diff
 
 echo "Completed ktlint hook."
-exit $gradleCommandExitCode
+exit 0
 ######## KTLINT-GRADLE HOOK END ########
