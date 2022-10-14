@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace = Environments.Release.appId
     compileSdkVersion = Config.Android.compileSdkVersion
 
     defaultConfig {

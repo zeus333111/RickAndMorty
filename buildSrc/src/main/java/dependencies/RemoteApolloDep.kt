@@ -2,10 +2,9 @@ package dependencies
 
 object RemoteApolloDep {
 
-    val test = Dependencies.TestDep.junit
-    val apollo = Dependencies.Apollo.apolloRuntime
-    val interceptor = Dependencies.OkHttpDep.loggingInterception
-
-    const val hilt = Dependencies.HiltDep.hilt
-    const val hiltKapt = Dependencies.HiltDep.hiltKapt
+    const val test = Dependencies.TestDep.junit
+    const val mockito = Dependencies.TestDep.mockitoKotlin
+    const val apollo = Dependencies.Apollo.apolloRuntime
+    const val interceptor = Dependencies.OkHttpDep.loggingInterception
+    const val javax = Dependencies.JavaDep.javax
 }

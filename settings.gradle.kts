@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "RickAndMorty"
 include(":rick-and-morty-ui")
 include(":remoteApollo")
+include(":data")

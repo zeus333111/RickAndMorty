@@ -1,15 +1,15 @@
 import dependencies.RemoteApolloDep
 
 plugins {
-    id(Config.Plugins.androidLibrary)
-    id(Config.Plugins.kotlinAndroid)
+    `java-library`
+    id(Config.Plugins.kotlin)
     id(Config.Plugins.kapt)
-    id(Config.Plugins.hilt)
     id(Config.Plugins.apollo)
 }
 
-android {
+/*android {
     compileSdk = Config.Android.targetSdkVersion
+    namespace = Config.Apollo.namespace
 
     defaultConfig {
         minSdk = Config.Android.minSdkVersion
@@ -38,7 +38,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-}
+}*/
 
 configure<com.apollographql.apollo3.gradle.api.ApolloExtension> {
     packageName.set("com.zeus.apollo")
@@ -46,11 +46,13 @@ configure<com.apollographql.apollo3.gradle.api.ApolloExtension> {
 
 dependencies {
 
-    implementation(RemoteApolloDep.hilt)
-    kapt(RemoteApolloDep.hiltKapt)
+    implementation(project(Modules.data))
+
+    implementation(RemoteApolloDep.javax)
 
     implementation(RemoteApolloDep.apollo)
     implementation(RemoteApolloDep.interceptor)
 
-    implementation(RemoteApolloDep.test)
+    testImplementation(RemoteApolloDep.test)
+    testImplementation(RemoteApolloDep.mockito)
 }
