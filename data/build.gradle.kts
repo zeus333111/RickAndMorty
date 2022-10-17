@@ -11,6 +11,8 @@ java {
 
 dependencies {
 
+    implementation(project(Modules.domain))
+
     implementation(DataDep.kotlin)
     implementation(DataDep.coroutineCore)
     implementation(DataDep.javaX)
