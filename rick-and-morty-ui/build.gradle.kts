@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = Environments.Release.appId
-    compileSdkVersion = Config.Android.compileSdkVersion
+    compileSdk = Config.Android.compileSdkVersion
 
     defaultConfig {
         applicationId = Environments.Release.appId

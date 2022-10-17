@@ -3,7 +3,7 @@ object Config {
     object Android {
         const val minSdkVersion = 26
         const val targetSdkVersion = 33
-        const val compileSdkVersion = "android-33"
+        const val compileSdkVersion = 33
     }
 
     object Plugins {
@@ -21,5 +21,9 @@ object Config {
 
     object Apollo {
         const val namespace = "com.zeus.remoteapollo"
+    }
+
+    object Presentation {
+        const val namespace = "com.zeus.presentation"
     }
 }
