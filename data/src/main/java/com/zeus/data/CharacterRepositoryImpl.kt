@@ -13,8 +13,8 @@ class CharacterRepositoryImpl @Inject constructor(
     private val characterMapper: CharacterMapper
 ) : CharacterRepository {
 
-    override suspend fun getCharacters(): Flow<List<Character>> = flow {
-        val characterList = dataSourceFactory.getRemoteDataSource().getCharacters().map {
+    override suspend fun getCharacters(page: Int): Flow<List<Character>> = flow {
+        val characterList = dataSourceFactory.getRemoteDataSource().getCharacters(page).map {
             characterMapper.mapFromEntity(it)
         }
         emit(characterList)

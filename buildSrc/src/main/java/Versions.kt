@@ -37,8 +37,10 @@ object Versions {
     const val loggingInterceptor = "5.0.0-alpha.5"
 
     //Compose
-    const val materialCompose = "1.0.0-beta01"
+    const val materialCompose = "1.3.0-rc01"
     const val activityCompose = "1.5.1"
+    const val navComposer = "2.5.2"
+    const val navigationComposerHilt = "1.0.0"
 
     //Coroutines
     const val coroutineCoreVersion = "1.6.4"

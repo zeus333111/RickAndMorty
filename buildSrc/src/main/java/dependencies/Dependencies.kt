@@ -52,13 +52,16 @@ object Dependencies {
     object HiltDep {
         const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
         const val hiltKapt = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+        const val navigationCompose = "androidx.hilt:hilt-navigation-compose:${Versions.navigationComposerHilt}"
     }
 
     object ComposeDep {
-        const val material = "androidx.compose.material3:material3:${Versions.materialCompose}"
+        const val material = "androidx.compose.material:material:${Versions.materialCompose}"
         const val ui = "androidx.compose.ui:ui:${Versions.compose}"
         const val toolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.compose}"
         const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
+        const val navigation= "androidx.navigation:navigation-compose:${Versions.navComposer}"
+        const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
     }
 
     object CoroutineDep {

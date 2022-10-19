@@ -8,7 +8,7 @@ import javax.inject.Inject
 class CharacterRemoteDataSource @Inject constructor(
     private val characterRemote: CharacterRemote
 ) : CharacterDataSource {
-    override suspend fun getCharacters(): List<CharacterEntity> {
-        return characterRemote.getCharacters(0)
+    override suspend fun getCharacters(page: Int): List<CharacterEntity> {
+        return characterRemote.getCharacters(page)
     }
 }

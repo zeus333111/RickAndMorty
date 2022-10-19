@@ -3,6 +3,8 @@ import dependencies.UiDep
 plugins {
     id(Config.Plugins.androidApplication)
     id(Config.Plugins.kotlinAndroid)
+    id(Config.Plugins.hilt)
+    id(Config.Plugins.kapt)
 }
 
 android {
@@ -26,6 +28,10 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/graphql\"")
+        }
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/graphql\"")
         }
     }
     compileOptions {
@@ -50,9 +56,18 @@ android {
 
 dependencies {
 
+    implementation(project(Modules.domain))
+    implementation(project(Modules.data))
+    implementation(project(Modules.presentation))
+    implementation(project(Modules.apollo))
+
     UiDep.core.forEach {
         implementation(it)
     }
+
+    implementation(UiDep.hilt)
+    kapt(UiDep.hiltKapt)
+    implementation(UiDep.hiltNavigation)
 
     UiDep.compose.forEach {
         implementation(it)

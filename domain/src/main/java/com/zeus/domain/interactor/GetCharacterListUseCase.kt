@@ -7,9 +7,9 @@ import javax.inject.Inject
 
 class GetCharacterListUseCase @Inject constructor(
     private val characterRepository: CharacterRepository
-) : BaseUseCase<Unit, Flow<List<Character>>> {
+) : BaseUseCase<Int, Flow<List<Character>>> {
 
-    override suspend fun invoke(parameter: Unit): Flow<List<Character>> {
-        return characterRepository.getCharacters()
+    override suspend fun invoke(parameter: Int): Flow<List<Character>> {
+        return characterRepository.getCharacters(parameter)
     }
 }

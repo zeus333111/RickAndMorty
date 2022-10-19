@@ -45,6 +45,7 @@ dependencies {
     implementation(PresentationDep.lifecycle)
     implementation(PresentationDep.liveData)
     implementation(PresentationDep.coroutines)
+    implementation(PresentationDep.composeRuntime)
 
     implementation(PresentationDep.hilt)
     kapt(PresentationDep.hiltKapt)

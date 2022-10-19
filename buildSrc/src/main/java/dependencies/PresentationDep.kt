@@ -6,6 +6,7 @@ object PresentationDep {
     const val lifecycle = Dependencies.CoreDep.lifecycle
     const val liveData = Dependencies.CoreDep.liveData
     const val coroutines = Dependencies.CoroutineDep.coroutinesAndroid
+    const val composeRuntime = Dependencies.ComposeDep.composeRuntime
 
     const val hilt = Dependencies.HiltDep.hilt
     const val hiltKapt = Dependencies.HiltDep.hiltKapt
