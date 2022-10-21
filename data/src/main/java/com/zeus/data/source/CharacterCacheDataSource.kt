@@ -1,23 +1,24 @@
 package com.zeus.data.source
 
 import com.zeus.data.models.CharacterEntity
+import com.zeus.data.repository.CharacterCache
 import com.zeus.data.repository.CharacterDataSource
-import com.zeus.data.repository.CharacterRemote
 import javax.inject.Inject
 
-class CharacterRemoteDataSource @Inject constructor(
-    private val characterRemote: CharacterRemote
+class CharacterCacheDataSource @Inject constructor(
+    private val characterCache: CharacterCache
 ) : CharacterDataSource {
 
     override suspend fun getCharacters(page: Int): List<CharacterEntity> {
-        return characterRemote.getCharacters(page)
+        return characterCache.getCharacters(page)
     }
 
     override suspend fun saveCharacter(list: List<CharacterEntity>) {
-        throw UnsupportedOperationException("Save Character is not supported for RemoteDataSource")
+        characterCache.saveCharacters(list)
+        characterCache.setLastCacheTime(System.currentTimeMillis())
     }
 
     override suspend fun isCached(page: Int): Boolean {
-        throw UnsupportedOperationException("isCached is not supported for RemoteDataSource")
+        return characterCache.isCached(page)
     }
 }

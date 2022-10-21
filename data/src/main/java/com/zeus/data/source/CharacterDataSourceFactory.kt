@@ -1,16 +1,28 @@
 package com.zeus.data.source
 
+import com.zeus.data.repository.CharacterCache
 import com.zeus.data.repository.CharacterDataSource
 import javax.inject.Inject
 
-class CharacterDataSourceFactory @Inject constructor(
-    // todo cache
-    private val remoteDataSource: CharacterRemoteDataSource
+open class CharacterDataSourceFactory @Inject constructor(
+    private val remoteDataSource: CharacterRemoteDataSource,
+    private val characterCacheDataSource: CharacterCacheDataSource,
+    private val characterCache: CharacterCache
 ) {
 
-    // todo funcion de cache o remoto
+    open suspend fun getDataStore(isCache: Boolean): CharacterDataSource {
+        return if (isCache && !characterCache.isExpired()) {
+            return getCacheDataSource()
+        } else {
+            getRemoteDataSource()
+        }
+    }
 
-    fun getRemoteDataSource(): CharacterDataSource {
+    private fun getRemoteDataSource(): CharacterDataSource {
         return remoteDataSource
+    }
+
+    fun getCacheDataSource(): CharacterCacheDataSource {
+        return characterCacheDataSource
     }
 }

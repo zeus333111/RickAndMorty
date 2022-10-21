@@ -5,6 +5,7 @@
       <module name="RickAndMorty.buildSrc" target="17" />
       <module name="RickAndMorty.buildSrc.main" target="17" />
       <module name="RickAndMorty.buildSrc.test" target="17" />
+      <module name="RickAndMorty.cache" target="17" />
       <module name="RickAndMorty.presentation" target="17" />
       <module name="RickAndMorty.remoteApollo" target="17" />
       <module name="RickAndMorty.remoteApollo.main" target="17" />

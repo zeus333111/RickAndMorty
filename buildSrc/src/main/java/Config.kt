@@ -26,4 +26,8 @@ object Config {
     object Presentation {
         const val namespace = "com.zeus.presentation"
     }
+
+    object Cache {
+        const val namespace = "com.zeus.cache"
+    }
 }

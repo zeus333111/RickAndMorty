@@ -4,4 +4,5 @@ object Modules {
     const val apollo = ":remoteApollo"
     const val domain = ":domain"
     const val presentation = ":presentation"
+    const val cache = ":cache"
 }

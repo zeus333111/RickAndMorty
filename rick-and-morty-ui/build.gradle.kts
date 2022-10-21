@@ -60,6 +60,7 @@ dependencies {
     implementation(project(Modules.data))
     implementation(project(Modules.presentation))
     implementation(project(Modules.apollo))
+    implementation(project(Modules.cache))
 
     UiDep.core.forEach {
         implementation(it)

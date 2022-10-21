@@ -46,4 +46,6 @@ object Versions {
     const val coroutineCoreVersion = "1.6.4"
     const val coroutineAndroidVersion = "1.6.4"
 
+    //Room
+    const val roomVersion = "2.4.3"
 }

@@ -68,4 +68,9 @@ object Dependencies {
         const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutineCoreVersion}"
         const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutineAndroidVersion}"
     }
+
+    object Room {
+        const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
+        const val roomKapt = "androidx.room:room-compiler:${Versions.roomVersion}"
+    }
 }
