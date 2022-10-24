@@ -2,6 +2,7 @@ package com.zeus.rickandmorty.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,6 +11,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -24,17 +26,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.zeus.domain.models.Character
 import com.zeus.presentation.utils.CharacterUIModel
 import com.zeus.presentation.viewmodel.HomeViewModel
 import com.zeus.rickandmorty.R
+import com.zeus.rickandmorty.ui.home.components.CharacterItem
 
 @Composable
 fun HomeScreen(
-    onItemClicked: (Int) -> Unit,
+    onItemClicked: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val state = viewModel.state
@@ -67,10 +69,10 @@ fun HomeScreen(
                 onNextPressed = { viewModel.getCharacters(true) }
             )
         }
-    ) { innerPadding ->
+    ) { padding ->
         HomeContent(
-            modifier = Modifier,
-            onItemClicked,
+            modifier = Modifier.padding(padding),
+            onItemClicked = onItemClicked,
             isLoading = state.isLoading,
             characters = state.characters
         )
@@ -80,7 +82,7 @@ fun HomeScreen(
 @Composable
 fun HomeContent(
     modifier: Modifier = Modifier,
-    onItemClicked: (Int) -> Unit,
+    onItemClicked: (String) -> Unit,
     isLoading: Boolean = false,
     characters: List<Character> = emptyList()
 ) {
@@ -93,8 +95,15 @@ fun HomeContent(
             modifier = Modifier.fillMaxWidth(),
         ) {
             items(characters.size) { index ->
-                Text(text = characters[index].name)
+                CharacterItem(
+                    modifier = Modifier.fillMaxWidth(),
+                    item = characters[index],
+                    onItemClicked = onItemClicked
+                )
             }
+        }
+        if (isLoading) {
+            FullScreenLoading()
         }
     }
 }
@@ -140,7 +149,6 @@ fun HomeButtonBar(
 }
 
 @Composable
-@Preview
 fun HomeToBar(
     modifier: Modifier = Modifier
 ) {
@@ -155,4 +163,15 @@ fun HomeToBar(
             )
         }, backgroundColor = MaterialTheme.colors.surface
     )
+}
+
+@Composable
+fun FullScreenLoading() {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .wrapContentSize(Alignment.Center)
+    ) {
+        CircularProgressIndicator()
+    }
 }

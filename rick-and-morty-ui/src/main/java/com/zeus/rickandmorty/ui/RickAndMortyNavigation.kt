@@ -6,7 +6,7 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Detail : Screen("details?id={id}") {
-        fun passId(id: Int): String {
+        fun passId(id: String): String {
             return "details?id=$id"
         }
     }
@@ -24,7 +24,7 @@ class RickAndMortyActions(navController: NavController) {
         }
     }
 
-    val navigateToDetail: (id: Int) -> Unit = { id ->
+    val navigateToDetail: (id: String) -> Unit = { id ->
         navController.navigate(Screen.Detail.passId(id)) {
             popUpTo(navController.graph.findStartDestination().id) {
                 saveState = true

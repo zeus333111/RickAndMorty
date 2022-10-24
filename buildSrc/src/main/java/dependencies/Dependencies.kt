@@ -62,6 +62,7 @@ object Dependencies {
         const val activityCompose = "androidx.activity:activity-compose:${Versions.activityCompose}"
         const val navigation= "androidx.navigation:navigation-compose:${Versions.navComposer}"
         const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
+        const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
     }
 
     object CoroutineDep {

@@ -16,7 +16,8 @@ object UiDep {
         Dependencies.ComposeDep.material,
         Dependencies.ComposeDep.toolingPreview,
         Dependencies.ComposeDep.activityCompose,
-        Dependencies.ComposeDep.navigation
+        Dependencies.ComposeDep.navigation,
+        Dependencies.ComposeDep.coil
     )
 
     const val testJunit = Dependencies.TestDep.junit

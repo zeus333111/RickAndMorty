@@ -41,6 +41,7 @@ object Versions {
     const val activityCompose = "1.5.1"
     const val navComposer = "2.5.2"
     const val navigationComposerHilt = "1.0.0"
+    const val coil = "2.2.2"
 
     //Coroutines
     const val coroutineCoreVersion = "1.6.4"
