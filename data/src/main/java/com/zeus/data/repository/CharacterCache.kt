@@ -8,4 +8,6 @@ interface CharacterCache {
     suspend fun isCached(page: Int): Boolean
     suspend fun setLastCacheTime(lastCache: Long)
     suspend fun isExpired(): Boolean
+    suspend fun characterIsCached(id: String): Boolean
+    suspend fun getCharacter(id: String): CharacterEntity?
 }

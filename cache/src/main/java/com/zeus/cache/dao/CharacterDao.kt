@@ -14,4 +14,7 @@ interface CharacterDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveCharacters(listOfCharacters: List<CharacterCacheEntity>)
+
+    @Query("SELECT * FROM characters WHERE id = :id")
+    fun getCharacter(id: String): CharacterCacheEntity?
 }

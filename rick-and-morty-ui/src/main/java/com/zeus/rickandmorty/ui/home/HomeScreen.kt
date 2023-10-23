@@ -21,6 +21,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,31 +30,26 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.zeus.domain.models.Character
-import com.zeus.presentation.utils.CharacterUIModel
 import com.zeus.presentation.viewmodel.HomeViewModel
 import com.zeus.rickandmorty.R
 import com.zeus.rickandmorty.ui.home.components.CharacterItem
+import com.zeus.rickandmorty.ui.home.components.ErrorMessage
+import kotlinx.coroutines.delay
 
 @Composable
 fun HomeScreen(
     onItemClicked: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    val state = viewModel.state
-    val eventFlow = viewModel.eventFlow
+    val state = viewModel.state.observeAsState()
     val scaffoldState = rememberScaffoldState()
 
-    LaunchedEffect(key1 = true) {
+    LaunchedEffect(true) {
         viewModel.getCharacters(false)
-        eventFlow.collect { event ->
-            when (event) {
-                is CharacterUIModel.Error -> {
-                    scaffoldState.snackbarHostState.showSnackbar(
-                        message = event.error
-                    )
-                }
-            }
-        }
+    }
+    LaunchedEffect(key1 = state.value?.showError) {
+        delay(5000)
+        viewModel.showError(false)
     }
 
     Scaffold(
@@ -63,8 +59,8 @@ fun HomeScreen(
         },
         bottomBar = {
             HomeButtonBar(
-                showPrevious = state.showPrevious,
-                showNext = state.showNext,
+                showPrevious = state.value?.showPrevious ?: false,
+                showNext = state.value?.showNext ?: false,
                 onPreviousPressed = { viewModel.getCharacters(false) },
                 onNextPressed = { viewModel.getCharacters(true) }
             )
@@ -73,8 +69,13 @@ fun HomeScreen(
         HomeContent(
             modifier = Modifier.padding(padding),
             onItemClicked = onItemClicked,
-            isLoading = state.isLoading,
-            characters = state.characters
+            isLoading = state.value?.isLoading ?: true,
+            characters = state.value?.characters ?: emptyList()
+        )
+        ErrorMessage(
+            modifier = Modifier.padding(padding),
+            error = state.value?.errorString ?: "",
+            state.value?.showError ?: false
         )
     }
 }

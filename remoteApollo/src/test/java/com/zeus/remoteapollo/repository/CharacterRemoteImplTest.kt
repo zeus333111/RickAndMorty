@@ -2,7 +2,6 @@ package com.zeus.remoteapollo.repository
 
 import com.nhaarman.mockitokotlin2.mock
 import com.zeus.remoteapollo.api.RemoteApolloClient
-import com.zeus.remoteapollo.mappers.CharacterEntityMapper
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -13,11 +12,10 @@ class CharacterRemoteImplTest {
 
     private lateinit var characterRemoteImpl: CharacterRemoteImpl
     private val client: RemoteApolloClient = mock()
-    private val characterEntityMapper = CharacterEntityMapper()
 
     @Before
     fun setup() {
-        characterRemoteImpl = CharacterRemoteImpl(client, characterEntityMapper)
+        characterRemoteImpl = CharacterRemoteImpl(client)
     }
 
     @Test

@@ -42,6 +42,7 @@ object Versions {
     const val navComposer = "2.5.2"
     const val navigationComposerHilt = "1.0.0"
     const val coil = "2.2.2"
+    const val livedata = "1.3.2"
 
     //Coroutines
     const val coroutineCoreVersion = "1.6.4"

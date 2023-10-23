@@ -21,4 +21,12 @@ class CharacterCacheDataSource @Inject constructor(
     override suspend fun isCached(page: Int): Boolean {
         return characterCache.isCached(page)
     }
+
+    override suspend fun characterIsCached(id: String): Boolean {
+        return characterCache.characterIsCached(id)
+    }
+
+    override suspend fun getCharacter(id: String): CharacterEntity? {
+        return characterCache.getCharacter(id)
+    }
 }

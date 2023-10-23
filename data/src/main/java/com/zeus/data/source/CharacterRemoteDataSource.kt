@@ -20,4 +20,12 @@ class CharacterRemoteDataSource @Inject constructor(
     override suspend fun isCached(page: Int): Boolean {
         throw UnsupportedOperationException("isCached is not supported for RemoteDataSource")
     }
+
+    override suspend fun characterIsCached(id: String): Boolean {
+        throw UnsupportedOperationException("characterIsCached is not supported for RemoteDataSource")
+    }
+
+    override suspend fun getCharacter(id: String): CharacterEntity? {
+        return characterRemote.getCharacter(id)
+    }
 }

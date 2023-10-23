@@ -1,0 +1,5 @@
+query getCharacter($id: ID!) {
+    character(id: $id) {
+        ...CharacterData
+    }
+}

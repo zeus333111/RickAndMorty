@@ -1,7 +1,8 @@
 package com.zeus.cache
 
 import com.zeus.cache.dao.CharacterDao
-import com.zeus.cache.mapper.CharacterCacheMapper
+import com.zeus.cache.mapper.toCharacterCacheEntity
+import com.zeus.cache.mapper.toCharacterEntity
 import com.zeus.cache.utils.CachePreferencesHelper
 import com.zeus.data.models.CharacterEntity
 import com.zeus.data.repository.CharacterCache
@@ -9,18 +10,17 @@ import javax.inject.Inject
 
 class CharacterCacheImpl @Inject constructor(
     private val characterDao: CharacterDao,
-    private val characterCacheMapper: CharacterCacheMapper,
     private val preferencesHelper: CachePreferencesHelper
 ) : CharacterCache {
 
     override suspend fun getCharacters(page: Int): List<CharacterEntity> {
         return characterDao.getCharacters(page).map {
-            characterCacheMapper.mapFromCache(it)
+            it.toCharacterEntity()
         }
     }
 
     override suspend fun saveCharacters(listCharacters: List<CharacterEntity>) {
-        val list = listCharacters.map { characterCacheMapper.mapToCache(it) }
+        val list = listCharacters.map { it.toCharacterCacheEntity() }
         characterDao.saveCharacters(list)
     }
 
@@ -40,6 +40,14 @@ class CharacterCacheImpl @Inject constructor(
 
     private fun getLastCacheUpdateTimeMillis(): Long {
         return preferencesHelper.lastCache
+    }
+
+    override suspend fun characterIsCached(id: String): Boolean {
+        return characterDao.getCharacter(id) != null
+    }
+
+    override suspend fun getCharacter(id: String): CharacterEntity? {
+        return characterDao.getCharacter(id)?.toCharacterEntity()
     }
 
     companion object {

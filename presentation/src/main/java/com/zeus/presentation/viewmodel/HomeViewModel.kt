@@ -1,17 +1,11 @@
 package com.zeus.presentation.viewmodel
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.zeus.domain.interactor.GetCharacterListUseCase
-import com.zeus.presentation.utils.CharacterUIModel
 import com.zeus.presentation.utils.CoroutineContextProvider
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.SharedFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,27 +14,27 @@ class HomeViewModel @Inject constructor(
     private val characterListUseCase: GetCharacterListUseCase
 ) : BaseViewModel(contextProvider) {
 
-    var state by mutableStateOf(HomeState(isLoading = true))
-        private set
-
-    private val _eventFlow = MutableSharedFlow<CharacterUIModel>()
-    val eventFlow: SharedFlow<CharacterUIModel> = _eventFlow
+    private val _state = MutableLiveData(HomeState())
+    val state: LiveData<HomeState> = _state
 
     private var currentPage = 1
 
-    override val coroutineExceptionHandler = CoroutineExceptionHandler { context, throwable ->
+    override val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         val message = throwable.message
-        // _characterList.postValue(CharacterUIModel.Error(message ?: "Error"))
-        viewModelScope.launch {
-            _eventFlow.emit(CharacterUIModel.Error(message ?: "Error"))
-        }
+        _state.postValue(
+            state.value?.copy(
+                isLoading = false,
+                showError = true,
+                errorString = message ?: "Error"
+            )
+        )
     }
 
-    /*private val _characterList = MutableLiveData<CharacterUIModel>()
-    val characterList: LiveData<CharacterUIModel> = _characterList*/
-
     fun getCharacters(increase: Boolean) = launchCoroutineIO {
-        state = state.copy(isLoading = true)
+        _state.postValue(
+            state.value?.copy(isLoading = true)
+        )
+
         if (increase) {
             currentPage++
         } else if (currentPage > 1) {
@@ -48,15 +42,21 @@ class HomeViewModel @Inject constructor(
         }
         val showPrevious = currentPage > 1
         val showNext = currentPage < 42
-
         characterListUseCase.invoke(currentPage).collect {
-            // _characterList.postValue(CharacterUIModel.Success(it))
-            state = state.copy(
-                characters = it,
-                isLoading = false,
-                showNext = showNext,
-                showPrevious = showPrevious
+            _state.postValue(
+                state.value?.copy(
+                    characters = it,
+                    isLoading = false,
+                    showNext = showNext,
+                    showPrevious = showPrevious
+                )
             )
         }
+    }
+
+    fun showError(visible: Boolean) = launchCoroutineIO {
+        _state.postValue(
+            state.value?.copy(showError = visible, errorString = "")
+        )
     }
 }

@@ -1,0 +1,7 @@
+fragment LocationData on Location {
+    id
+    name
+    type
+    dimension
+    created
+}

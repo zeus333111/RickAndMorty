@@ -1,6 +1,5 @@
 package com.zeus.rickandmorty.ui
 
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -9,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.zeus.rickandmorty.ui.details.DetailsScreen
 import com.zeus.rickandmorty.ui.home.HomeScreen
 
 @Composable
@@ -34,8 +34,11 @@ fun RickAndMortyNavGraph(
             route = Screen.Detail.route,
             arguments = listOf(navArgument("id") { type = NavType.StringType })
         ) { backStackEntry ->
-            val id = backStackEntry.arguments?.getString("id")
-            Text(text = "Detalles :v $id")
+            val id = backStackEntry.arguments?.getString("id") ?: ""
+            DetailsScreen(
+                characterId = id,
+                onBackClicked = navigateToHome
+            )
         }
     }
 }

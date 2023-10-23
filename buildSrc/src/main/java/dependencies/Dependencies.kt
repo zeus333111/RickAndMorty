@@ -63,6 +63,7 @@ object Dependencies {
         const val navigation= "androidx.navigation:navigation-compose:${Versions.navComposer}"
         const val composeRuntime = "androidx.compose.runtime:runtime:${Versions.compose}"
         const val coil = "io.coil-kt:coil-compose:${Versions.coil}"
+        const val liveData = "androidx.compose.runtime:runtime-livedata:${Versions.livedata}"
     }
 
     object CoroutineDep {

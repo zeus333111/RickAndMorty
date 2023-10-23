@@ -1,0 +1,16 @@
+fragment CharacterData on Character {
+    id
+    name
+    status
+    species
+    type
+    gender
+    origin {
+        ...LocationData
+    }
+    location {
+        ...LocationData
+    }
+    image
+    created
+}
