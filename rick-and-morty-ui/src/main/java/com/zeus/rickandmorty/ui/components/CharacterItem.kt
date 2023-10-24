@@ -1,4 +1,4 @@
-package com.zeus.rickandmorty.ui.home.components
+package com.zeus.rickandmorty.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -43,7 +43,7 @@ fun CharacterItem(
             .padding(start = 6.dp, top = 12.dp, bottom = 12.dp)
     ) {
         CharacterImageContainer(modifier = Modifier.size(64.dp)) {
-            CharacterImage(item = item)
+            CharacterImage(character = item)
         }
         Spacer(modifier = Modifier.width(20.dp))
         Column(
@@ -64,11 +64,11 @@ fun CharacterItem(
 }
 
 @Composable
-fun CharacterImage(item: Character) {
+fun CharacterImage(character: Character?) {
     Box {
         val painter = rememberAsyncImagePainter(
             model = ImageRequest.Builder(LocalContext.current)
-                .data(item.image)
+                .data(character?.image)
                 .size(Size.ORIGINAL)
                 .build()
         )

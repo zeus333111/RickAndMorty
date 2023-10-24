@@ -2,7 +2,6 @@ package com.zeus.rickandmorty.ui.home
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
@@ -32,8 +30,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.zeus.domain.models.Character
 import com.zeus.presentation.viewmodel.HomeViewModel
 import com.zeus.rickandmorty.R
-import com.zeus.rickandmorty.ui.home.components.CharacterItem
-import com.zeus.rickandmorty.ui.home.components.ErrorMessage
+import com.zeus.rickandmorty.ui.components.CharacterItem
+import com.zeus.rickandmorty.ui.components.ErrorMessage
+import com.zeus.rickandmorty.ui.components.FullScreenLoading
 import kotlinx.coroutines.delay
 
 @Composable
@@ -164,15 +163,4 @@ fun HomeToBar(
             )
         }, backgroundColor = MaterialTheme.colors.surface
     )
-}
-
-@Composable
-fun FullScreenLoading() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
-    ) {
-        CircularProgressIndicator()
-    }
 }

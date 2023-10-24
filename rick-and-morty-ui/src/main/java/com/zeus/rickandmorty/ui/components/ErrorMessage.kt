@@ -1,4 +1,4 @@
-package com.zeus.rickandmorty.ui.home.components
+package com.zeus.rickandmorty.ui.components
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn

@@ -7,6 +7,6 @@ data class HomeState(
     val showPrevious: Boolean = false,
     val showNext: Boolean = false,
     val isLoading: Boolean = false,
-    var showError: Boolean = false,
+    val showError: Boolean = false,
     val errorString: String = ""
 )
