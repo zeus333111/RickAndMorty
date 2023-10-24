@@ -1,5 +1,7 @@
 package dependencies
 
+import Versions
+
 object Dependencies {
 
     object KotlinDep {
@@ -13,6 +15,10 @@ object Dependencies {
         const val lifecycle = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
         const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+        const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+        const val fragment = "androidx.fragment:fragment-ktx:${Versions.fragment}"
+        const val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
+        const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     }
 
     object JavaDep {

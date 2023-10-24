@@ -1,23 +1,30 @@
+import org.gradle.api.JavaVersion
+
 object Versions {
 
-    const val compose = "1.3.0-rc01"
-    const val kotlinVersion = "1.7.10"
+    const val compose = "1.5.1"
+    const val kotlinVersion = "1.9.0"
+    const val agpVersion = "8.1.2"
 
     //Plugins
-    const val androidApplication = "7.3.1"
-    const val androidLibrary = "7.3.1"
-    const val kotlinAndroid = "1.7.10"
-    const val kapt = "1.7.10"
-    const val hilt = "2.44"
+    const val androidApplication = agpVersion
+    const val androidLibrary = agpVersion
+    const val kotlinAndroid = kotlinVersion
+    const val kapt = kotlinVersion
+    const val hilt = "2.48.1"
     const val apollo = "3.6.2"
     const val ktlint = "11.0.0"
-    const val jvm = "1.7.10"
+    const val jvm = kotlinVersion
+    const val safeArgs = "2.5.3"
 
     //Core dependencies
-    const val coreKtx = "1.8.0"
-    const val appcompat = "1.5.0"
-    const val material = "1.0.0-beta01"
-    const val lifecycle = "2.5.1"
+    const val coreKtx = "1.12.0"
+    const val appcompat = "1.6.1"
+    const val material = "1.10.0"
+    const val lifecycle = "2.6.2"
+    const val constraintLayout = "2.1.4"
+    const val fragment = "1.6.1"
+    const val navigation = "2.5.3"
 
     //Javax Inject
     const val javaxInjectVersion = "1"
@@ -50,4 +57,8 @@ object Versions {
 
     //Room
     const val roomVersion = "2.4.3"
+
+    val sourceCompatibility = JavaVersion.VERSION_17
+    val targetCompatibility =  JavaVersion.VERSION_17
+    const val kotlinJvmTarget = "17"
 }

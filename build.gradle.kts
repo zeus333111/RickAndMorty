@@ -7,6 +7,7 @@ plugins {
     id(Config.Plugins.hilt) version Versions.hilt apply false
     id(Config.Plugins.apollo) version Versions.apollo apply false
     id(Config.Plugins.ktlint) version Versions.ktlint apply false
+    id(Config.Plugins.safeArgs) version Versions.safeArgs apply false
 }
 
 allprojects {

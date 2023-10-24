@@ -1,10 +1,11 @@
-import dependencies.UiDep
+import dependencies.UIXmlDep
 
 plugins {
     id(Config.Plugins.androidApplication)
     id(Config.Plugins.kotlinAndroid)
     id(Config.Plugins.hilt)
     id(Config.Plugins.kapt)
+    id(Config.Plugins.safeArgs)
 }
 
 android {
@@ -27,25 +28,28 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
             buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/graphql\"")
         }
         debug {
             buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/graphql\"")
         }
     }
+
     compileOptions {
         sourceCompatibility = Versions.sourceCompatibility
         targetCompatibility = Versions.targetCompatibility
     }
+
     kotlinOptions {
         jvmTarget = Versions.kotlinJvmTarget
     }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = Versions.compose
+
+    viewBinding {
+        enable = true
     }
 }
 
@@ -57,25 +61,16 @@ dependencies {
     implementation(project(Modules.apollo))
     implementation(project(Modules.cache))
 
-    UiDep.core.forEach {
+    UIXmlDep.core.forEach {
         implementation(it)
     }
 
-    implementation(UiDep.hilt)
-    kapt(UiDep.hiltKapt)
-    implementation(UiDep.hiltNavigation)
+    implementation(UIXmlDep.hilt)
+    kapt(UIXmlDep.hiltKapt)
 
-    UiDep.compose.forEach {
-        implementation(it)
-    }
+    testImplementation(UIXmlDep.testJunit)
 
-    testImplementation(UiDep.testJunit)
-
-    UiDep.androidTest.forEach {
+    UIXmlDep.androidTest.forEach {
         androidTestImplementation(it)
-    }
-
-    UiDep.debugDep.forEach {
-        debugImplementation(it)
     }
 }

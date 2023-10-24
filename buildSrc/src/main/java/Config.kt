@@ -3,7 +3,7 @@ object Config {
     object Android {
         const val minSdkVersion = 26
         const val targetSdkVersion = 33
-        const val compileSdkVersion = 33
+        const val compileSdkVersion = 34
     }
 
     object Plugins {
@@ -15,6 +15,7 @@ object Config {
         const val hilt = "com.google.dagger.hilt.android"
         const val apollo = "com.apollographql.apollo3"
         const val ktlint = "org.jlleitschuh.gradle.ktlint"
+        const val safeArgs = "androidx.navigation.safeargs.kotlin"
     }
 
     const val testRunner = "androidx.test.runner.AndroidJUnitRunner"
