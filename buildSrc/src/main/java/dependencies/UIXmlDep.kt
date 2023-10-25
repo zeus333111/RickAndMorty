@@ -14,6 +14,8 @@ object UIXmlDep {
     val hilt = Dependencies.HiltDep.hilt
     val hiltKapt = Dependencies.HiltDep.hiltKapt
 
+    val coil = Dependencies.Extras.coil
+
     val testJunit = Dependencies.TestDep.junit
 
     val androidTest = listOf(

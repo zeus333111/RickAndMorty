@@ -81,4 +81,8 @@ object Dependencies {
         const val roomRuntime = "androidx.room:room-runtime:${Versions.roomVersion}"
         const val roomKapt = "androidx.room:room-compiler:${Versions.roomVersion}"
     }
+
+    object Extras {
+        const val coil = "io.coil-kt:coil:${Versions.coil}"
+    }
 }

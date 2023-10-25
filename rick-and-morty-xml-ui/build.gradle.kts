@@ -68,6 +68,8 @@ dependencies {
     implementation(UIXmlDep.hilt)
     kapt(UIXmlDep.hiltKapt)
 
+    implementation(UIXmlDep.coil)
+
     testImplementation(UIXmlDep.testJunit)
 
     UIXmlDep.androidTest.forEach {
