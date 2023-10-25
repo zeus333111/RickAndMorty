@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.zeus.presentation.viewmodel.HomeViewModel
 import com.zeus.rickandmorty.adapter.CharacterAdapter
 import com.zeus.rickandmorty.databinding.FragmentHomeBinding
@@ -37,7 +38,7 @@ class HomeFragment : Fragment() {
 
     private fun setupView() {
         adapter.setonClickListener {
-            // todo navigate to details
+            findNavController().navigate(HomeFragmentDirections.navigateToDetails(it.id))
         }
         binding.rvCharacters.adapter = adapter
         binding.btnPreviousPage.setOnClickListener {
@@ -57,7 +58,10 @@ class HomeFragment : Fragment() {
             }
 
             if (it.showError) {
-                // todo error view
+                binding.errorView.root.visibility = View.VISIBLE
+                binding.errorView.tvError.text = it.errorString
+            } else {
+                binding.errorView.root.visibility = View.GONE
             }
 
             binding.btnNextPage.isEnabled = it.showNext

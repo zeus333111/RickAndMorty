@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
     app:startDestination="@id/home_fragment">
 
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.zeus.rickandmorty.fragment.HomeFragment"
-        android:label="home_fragment" />
+        android:label="home_fragment"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/navigate_to_details"
+            app:destination="@id/details_fragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/details_fragment"
+        android:name="com.zeus.rickandmorty.fragment.DetailsFragment"
+        android:label="details_fragment"
+        tools:layout="@layout/fragment_details">
+
+        <argument
+            android:name="characterId"
+            app:argType="string"
+            app:nullable="false"/>
+
+    </fragment>
 
 </navigation>
