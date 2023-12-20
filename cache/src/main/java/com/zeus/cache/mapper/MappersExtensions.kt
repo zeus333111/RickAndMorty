@@ -16,7 +16,7 @@ internal fun CharacterCacheEntity.toCharacterEntity(): CharacterEntity {
         origin = this.origin.toLocationCacheEntity(),
         location = this.location.toLocationCacheEntity(),
         image = this.image,
-        created = this.created
+        created = this.created,
     )
 }
 
@@ -26,7 +26,7 @@ internal fun LocationCacheEntity.toLocationCacheEntity(): LocationEntity {
         name = this.name,
         type = this.type,
         dimension = this.dimension,
-        created = this.created
+        created = this.created,
     )
 }
 
@@ -42,7 +42,7 @@ internal fun CharacterEntity.toCharacterCacheEntity(): CharacterCacheEntity {
         location = this.location.toLocationCacheEntity(),
         image = this.image,
         created = this.created,
-        page = this.page
+        page = this.page,
     )
 }
 
@@ -52,6 +52,6 @@ internal fun LocationEntity.toLocationCacheEntity(): LocationCacheEntity {
         name = this.name,
         type = this.type,
         dimension = this.dimension,
-        created = this.created
+        created = this.created,
     )
 }

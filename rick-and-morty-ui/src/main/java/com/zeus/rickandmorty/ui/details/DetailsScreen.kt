@@ -19,7 +19,7 @@ import com.zeus.rickandmorty.ui.components.FullScreenLoading
 fun DetailsScreen(
     characterId: String,
     onBackClicked: () -> Unit,
-    viewModel: DetailsViewModel = hiltViewModel()
+    viewModel: DetailsViewModel = hiltViewModel(),
 ) {
     val state by viewModel.state.observeAsState()
 
@@ -31,7 +31,7 @@ fun DetailsScreen(
         topBar = {
             DetailsAppBar(
                 title = stringResource(id = R.string.information),
-                onBackClicked
+                onBackClicked,
             )
         },
         content = {
@@ -42,6 +42,6 @@ fun DetailsScreen(
                     DetailsContent(modifier = Modifier.padding(it), character = state?.character!!)
                 }
             }
-        }
+        },
     )
 }

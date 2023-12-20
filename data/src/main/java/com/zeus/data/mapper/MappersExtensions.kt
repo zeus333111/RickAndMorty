@@ -16,7 +16,7 @@ internal fun CharacterEntity.toCharacter(): Character {
         origin = this.origin.toCharacterLocation(),
         location = this.location.toCharacterLocation(),
         image = this.image,
-        created = this.created
+        created = this.created,
     )
 }
 
@@ -26,7 +26,7 @@ internal fun LocationEntity.toCharacterLocation(): CharacterLocation {
         name = this.name,
         type = this.type,
         dimension = this.dimension,
-        created = this.created
+        created = this.created,
     )
 }
 
@@ -41,7 +41,7 @@ internal fun Character.toCharacterEntity(): CharacterEntity {
         origin = this.origin.toLocationEntity(),
         location = this.location.toLocationEntity(),
         image = this.image,
-        created = this.created
+        created = this.created,
     )
 }
 
@@ -51,6 +51,6 @@ internal fun CharacterLocation.toLocationEntity(): LocationEntity {
         name = this.name,
         type = this.type,
         dimension = this.dimension,
-        created = this.created
+        created = this.created,
     )
 }

@@ -11,6 +11,8 @@ object DataDep {
         Dependencies.TestDep.coroutinesTest,
         Dependencies.TestDep.mockitoKotlin,
         Dependencies.TestDep.mockitoInline,
-        Dependencies.TestDep.assertJ
+        Dependencies.TestDep.assertJ,
+        Dependencies.TestDep.kotlinTest,
+        Dependencies.TestDep.turbine
     )
 }

@@ -20,5 +20,5 @@ data class CharacterCacheEntity(
     val location: LocationCacheEntity,
     val image: String,
     val created: String,
-    val page: Int
+    val page: Int,
 )

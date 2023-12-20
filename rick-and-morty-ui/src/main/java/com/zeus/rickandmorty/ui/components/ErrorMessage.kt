@@ -18,7 +18,7 @@ fun ErrorMessage(modifier: Modifier, error: String, isVisible: Boolean) {
     AnimatedVisibility(modifier = modifier, visible = isVisible, enter = fadeIn(), exit = fadeOut()) {
         Row(
             modifier = Modifier.fillMaxWidth()
-                .background(Color.Red)
+                .background(Color.Red),
         ) {
             Text(text = error, style = MaterialTheme.typography.body1, fontWeight = FontWeight.Bold)
         }

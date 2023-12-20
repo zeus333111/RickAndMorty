@@ -11,5 +11,5 @@ data class LocationCacheEntity(
     val name: String,
     val type: String,
     val dimension: String,
-    val created: String
+    val created: String,
 )

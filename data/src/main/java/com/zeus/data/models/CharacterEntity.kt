@@ -11,5 +11,5 @@ data class CharacterEntity(
     val location: LocationEntity,
     val image: String,
     val created: String,
-    val page: Int = 0
+    val page: Int = 0,
 )

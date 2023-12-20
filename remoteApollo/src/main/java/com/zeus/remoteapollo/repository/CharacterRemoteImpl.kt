@@ -11,19 +11,19 @@ import com.zeus.remoteapollo.mappers.toCharacterEntityList
 import javax.inject.Inject
 
 class CharacterRemoteImpl @Inject constructor(
-    private val client: RemoteApolloClient
+    private val client: RemoteApolloClient,
 ) : CharacterRemote {
 
     override suspend fun getCharacters(page: Int): List<CharacterEntity> {
         val dataFromServer = client.getClient().query(
-            GetCharactersQuery(Optional.present(page))
+            GetCharactersQuery(Optional.present(page)),
         ).execute().data
         return dataFromServer.toCharacterEntityList()
     }
 
     override suspend fun getCharacter(id: String): CharacterEntity? {
         val dataFromServer = client.getClient().query(
-            GetCharacterQuery(id)
+            GetCharacterQuery(id),
         ).execute().data
         return dataFromServer?.character?.characterData?.toCharacterEntity()
     }

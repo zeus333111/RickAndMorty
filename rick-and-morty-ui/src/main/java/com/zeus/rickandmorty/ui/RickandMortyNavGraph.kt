@@ -17,27 +17,26 @@ fun RickAndMortyNavGraph(
     navigateToHome: () -> Unit,
     navigateToDetail: (String) -> Unit,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Screen.Home.route
+    startDestination: String = Screen.Home.route,
 ) {
-
     NavHost(
         navController = navController,
         startDestination = startDestination,
-        modifier = modifier
+        modifier = modifier,
     ) {
         composable(route = Screen.Home.route) {
             HomeScreen(
-                onItemClicked = { navigateToDetail(it) }
+                onItemClicked = { navigateToDetail(it) },
             )
         }
         composable(
             route = Screen.Detail.route,
-            arguments = listOf(navArgument("id") { type = NavType.StringType })
+            arguments = listOf(navArgument("id") { type = NavType.StringType }),
         ) { backStackEntry ->
             val id = backStackEntry.arguments?.getString("id") ?: ""
             DetailsScreen(
                 characterId = id,
-                onBackClicked = navigateToHome
+                onBackClicked = navigateToHome,
             )
         }
     }

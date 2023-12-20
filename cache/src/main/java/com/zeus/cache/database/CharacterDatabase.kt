@@ -14,7 +14,7 @@ import javax.inject.Inject
 @Database(
     entities = [CharacterCacheEntity::class, LocationCacheEntity::class],
     version = Migrations.DB_VERSION,
-    exportSchema = false
+    exportSchema = false,
 )
 abstract class CharacterDatabase @Inject constructor() : RoomDatabase() {
 
@@ -22,16 +22,16 @@ abstract class CharacterDatabase @Inject constructor() : RoomDatabase() {
 
     companion object {
         @Volatile
-        private var INSTANCE: CharacterDatabase? = null
+        private var instance: CharacterDatabase? = null
 
-        fun getInstance(context: Context): CharacterDatabase = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+        fun getInstance(context: Context): CharacterDatabase = instance ?: synchronized(this) {
+            instance ?: buildDatabase(context).also { instance = it }
         }
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(
             context.applicationContext,
             CharacterDatabase::class.java,
-            CacheConstants.DB_NAME
+            CacheConstants.DB_NAME,
         ).build()
     }
 }

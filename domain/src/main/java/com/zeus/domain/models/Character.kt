@@ -10,5 +10,5 @@ data class Character(
     val origin: CharacterLocation,
     val location: CharacterLocation,
     val image: String,
-    val created: String
+    val created: String,
 )

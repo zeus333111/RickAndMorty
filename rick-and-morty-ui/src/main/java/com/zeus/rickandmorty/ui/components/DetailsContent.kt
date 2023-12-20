@@ -20,17 +20,17 @@ import com.zeus.rickandmorty.utils.dateFormatter
 @Composable
 fun DetailsContent(
     modifier: Modifier,
-    character: Character
+    character: Character,
 ) {
     Column(
         modifier = modifier
             .fillMaxSize()
             .padding(top = 15.dp)
             .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         CharacterImageContainer(
-            modifier = Modifier.size(200.dp)
+            modifier = Modifier.size(200.dp),
         ) {
             CharacterImage(character = character)
         }

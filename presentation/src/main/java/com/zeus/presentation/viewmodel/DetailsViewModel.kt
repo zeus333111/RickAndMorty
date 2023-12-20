@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     contextProvider: CoroutineContextProvider,
-    private val getCharacterUseCase: GetCharacterUseCase
+    private val getCharacterUseCase: GetCharacterUseCase,
 ) : BaseViewModel(contextProvider) {
 
     private val _state = MutableLiveData(DetailsState())
@@ -20,7 +20,7 @@ class DetailsViewModel @Inject constructor(
     override val coroutineExceptionHandler: CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, throwable ->
             _state.postValue(
-                _state.value?.copy(showError = true, errorMessage = throwable.message)
+                _state.value?.copy(showError = true, errorMessage = throwable.message),
             )
         }
 
@@ -28,15 +28,15 @@ class DetailsViewModel @Inject constructor(
         _state.postValue(
             _state.value?.copy(
                 showError = false,
-                isLoading = true
-            )
+                isLoading = true,
+            ),
         )
         getCharacterUseCase.invoke(id).collect {
             _state.postValue(
                 _state.value?.copy(
                     isLoading = false,
-                    character = it
-                )
+                    character = it,
+                ),
             )
         }
     }

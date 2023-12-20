@@ -6,9 +6,8 @@ import com.zeus.data.repository.CharacterDataSource
 import javax.inject.Inject
 
 class CharacterCacheDataSource @Inject constructor(
-    private val characterCache: CharacterCache
+    private val characterCache: CharacterCache,
 ) : CharacterDataSource {
-
     override suspend fun getCharacters(page: Int): List<CharacterEntity> {
         return characterCache.getCharacters(page)
     }

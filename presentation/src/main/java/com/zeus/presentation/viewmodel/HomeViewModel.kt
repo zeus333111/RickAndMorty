@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     contextProvider: CoroutineContextProvider,
-    private val characterListUseCase: GetCharacterListUseCase
+    private val characterListUseCase: GetCharacterListUseCase,
 ) : BaseViewModel(contextProvider) {
 
     private val _state = MutableLiveData(HomeState())
@@ -25,14 +25,14 @@ class HomeViewModel @Inject constructor(
             state.value?.copy(
                 isLoading = false,
                 showError = true,
-                errorString = message ?: "Error"
-            )
+                errorString = message ?: "Error",
+            ),
         )
     }
 
     fun getCharacters(increase: Boolean) = launchCoroutineIO {
         _state.postValue(
-            state.value?.copy(isLoading = true)
+            state.value?.copy(isLoading = true),
         )
 
         if (increase) {
@@ -48,15 +48,15 @@ class HomeViewModel @Inject constructor(
                     characters = it,
                     isLoading = false,
                     showNext = showNext,
-                    showPrevious = showPrevious
-                )
+                    showPrevious = showPrevious,
+                ),
             )
         }
     }
 
     fun showError(visible: Boolean) = launchCoroutineIO {
         _state.postValue(
-            state.value?.copy(showError = visible, errorString = "")
+            state.value?.copy(showError = visible, errorString = ""),
         )
     }
 }

@@ -6,9 +6,8 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class GetCharacterUseCase @Inject constructor(
-    private val characterRepository: CharacterRepository
+    private val characterRepository: CharacterRepository,
 ) : BaseUseCase<String, Flow<Character?>> {
-
     override suspend fun invoke(parameter: String): Flow<Character?> {
         return characterRepository.getCharacter(parameter)
     }

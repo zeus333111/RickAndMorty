@@ -6,9 +6,8 @@ import com.zeus.data.repository.CharacterRemote
 import javax.inject.Inject
 
 class CharacterRemoteDataSource @Inject constructor(
-    private val characterRemote: CharacterRemote
+    private val characterRemote: CharacterRemote,
 ) : CharacterDataSource {
-
     override suspend fun getCharacters(page: Int): List<CharacterEntity> {
         return characterRemote.getCharacters(page)
     }

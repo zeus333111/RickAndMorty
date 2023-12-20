@@ -16,7 +16,7 @@ fun RickAndMortyApp() {
         RickAndMortyNavGraph(
             navController = navController,
             navigateToHome = navigationActions.navigateToHome,
-            navigateToDetail = navigationActions.navigateToDetail
+            navigateToDetail = navigationActions.navigateToDetail,
         )
     }
 }

@@ -17,14 +17,14 @@ fun DetailRow(key: String, value: String) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+        horizontalArrangement = Arrangement.SpaceBetween,
     ) {
         Text(text = key, fontSize = 19.sp, fontWeight = FontWeight.Bold)
         Text(
             text = value.ifEmpty {
                 "N/A"
             },
-            fontSize = 18.sp
+            fontSize = 18.sp,
         )
     }
 }

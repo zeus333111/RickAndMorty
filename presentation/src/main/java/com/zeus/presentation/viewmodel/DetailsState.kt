@@ -6,5 +6,5 @@ data class DetailsState(
     val isLoading: Boolean = false,
     val character: Character? = null,
     val showError: Boolean = false,
-    val errorMessage: String? = null
+    val errorMessage: String? = null,
 )

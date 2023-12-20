@@ -38,7 +38,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun HomeScreen(
     onItemClicked: (String) -> Unit,
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val state = viewModel.state.observeAsState()
     val scaffoldState = rememberScaffoldState()
@@ -61,20 +61,20 @@ fun HomeScreen(
                 showPrevious = state.value?.showPrevious ?: false,
                 showNext = state.value?.showNext ?: false,
                 onPreviousPressed = { viewModel.getCharacters(false) },
-                onNextPressed = { viewModel.getCharacters(true) }
+                onNextPressed = { viewModel.getCharacters(true) },
             )
-        }
+        },
     ) { padding ->
         HomeContent(
             modifier = Modifier.padding(padding),
             onItemClicked = onItemClicked,
             isLoading = state.value?.isLoading ?: true,
-            characters = state.value?.characters ?: emptyList()
+            characters = state.value?.characters ?: emptyList(),
         )
         ErrorMessage(
             modifier = Modifier.padding(padding),
             error = state.value?.errorString ?: "",
-            state.value?.showError ?: false
+            state.value?.showError ?: false,
         )
     }
 }
@@ -84,11 +84,11 @@ fun HomeContent(
     modifier: Modifier = Modifier,
     onItemClicked: (String) -> Unit,
     isLoading: Boolean = false,
-    characters: List<Character> = emptyList()
+    characters: List<Character> = emptyList(),
 ) {
     Surface(
         modifier = modifier.fillMaxSize(),
-        color = MaterialTheme.colors.surface
+        color = MaterialTheme.colors.surface,
     ) {
         LazyColumn(
             contentPadding = PaddingValues(vertical = 6.dp),
@@ -98,7 +98,7 @@ fun HomeContent(
                 CharacterItem(
                     modifier = Modifier.fillMaxWidth(),
                     item = characters[index],
-                    onItemClicked = onItemClicked
+                    onItemClicked = onItemClicked,
                 )
             }
         }
@@ -113,25 +113,25 @@ fun HomeButtonBar(
     showPrevious: Boolean,
     showNext: Boolean,
     onPreviousPressed: () -> Unit,
-    onNextPressed: () -> Unit
+    onNextPressed: () -> Unit,
 ) {
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.Transparent)
+            .background(Color.Transparent),
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 2.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
         ) {
             TextButton(
                 modifier = Modifier
                     .weight(1f)
                     .height(48.dp),
                 enabled = showPrevious,
-                onClick = onPreviousPressed
+                onClick = onPreviousPressed,
             ) {
                 Text(text = stringResource(id = R.string.previous_button))
             }
@@ -140,7 +140,7 @@ fun HomeButtonBar(
                     .weight(1f)
                     .height(48.dp),
                 enabled = showNext,
-                onClick = onNextPressed
+                onClick = onNextPressed,
             ) {
                 Text(text = stringResource(id = R.string.next_button))
             }
@@ -150,7 +150,7 @@ fun HomeButtonBar(
 
 @Composable
 fun HomeToBar(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
 ) {
     TopAppBar(
         title = {
@@ -159,8 +159,9 @@ fun HomeToBar(
                 textAlign = TextAlign.Center,
                 modifier = modifier
                     .fillMaxSize()
-                    .wrapContentSize(Alignment.Center)
+                    .wrapContentSize(Alignment.Center),
             )
-        }, backgroundColor = MaterialTheme.colors.surface
+        },
+        backgroundColor = MaterialTheme.colors.surface,
     )
 }

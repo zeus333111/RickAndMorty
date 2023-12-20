@@ -4,7 +4,7 @@ object Versions {
 
     const val compose = "1.5.1"
     const val kotlinVersion = "1.9.0"
-    const val agpVersion = "8.1.2"
+    const val agpVersion = "8.1.4"
 
     //Plugins
     const val androidApplication = agpVersion
@@ -13,7 +13,7 @@ object Versions {
     const val kapt = kotlinVersion
     const val hilt = "2.48.1"
     const val apollo = "3.6.2"
-    const val ktlint = "11.0.0"
+    const val ktlint = "12.0.3"
     const val jvm = kotlinVersion
     const val safeArgs = "2.5.3"
 
@@ -32,9 +32,10 @@ object Versions {
     //Test dependencies
     const val jUnit = "4.13.2"
     const val coroutinesTestVersion = "1.4.3"
-    const val mockitoKotlinVersion = "2.1.0"
-    const val mockitoInlineVersion = "2.13.0"
+    const val mockitoKotlinVersion = "5.2.1"
+    const val mockitoInlineVersion = "5.2.0"
     const val assertJVersion = "3.11.1"
+    const val turbineVersion = "1.0.0"
 
     //Android Test
     const val androidJunit = "1.1.3"

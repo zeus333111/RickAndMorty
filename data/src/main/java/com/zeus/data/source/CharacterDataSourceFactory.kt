@@ -7,10 +7,9 @@ import javax.inject.Inject
 open class CharacterDataSourceFactory @Inject constructor(
     private val remoteDataSource: CharacterRemoteDataSource,
     private val characterCacheDataSource: CharacterCacheDataSource,
-    private val characterCache: CharacterCache
+    private val characterCache: CharacterCache,
 ) {
-
-    open suspend fun getDataStore(isCache: Boolean): CharacterDataSource {
+    suspend fun getDataStore(isCache: Boolean): CharacterDataSource {
         return if (isCache && !characterCache.isExpired()) {
             return getCacheDataSource()
         } else {

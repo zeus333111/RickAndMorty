@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 open class CachePreferencesHelper @Inject constructor(
-    context: Context
+    context: Context,
 ) {
     companion object {
         private const val PREF_NAME = "cache_pref"

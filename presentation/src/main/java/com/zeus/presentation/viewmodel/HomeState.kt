@@ -8,5 +8,5 @@ data class HomeState(
     val showNext: Boolean = false,
     val isLoading: Boolean = false,
     val showError: Boolean = false,
-    val errorString: String = ""
+    val errorString: String = "",
 )

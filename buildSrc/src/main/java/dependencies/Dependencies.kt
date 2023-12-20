@@ -30,9 +30,11 @@ object Dependencies {
         const val coroutinesTest =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutinesTestVersion}"
         const val mockitoKotlin =
-            "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlinVersion}"
+            "org.mockito.kotlin:mockito-kotlin:${Versions.mockitoKotlinVersion}"
         const val mockitoInline = "org.mockito:mockito-inline:${Versions.mockitoInlineVersion}"
         const val assertJ = "org.assertj:assertj-core:${Versions.assertJVersion}"
+        const val kotlinTest = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlinVersion}"
+        const val turbine = "app.cash.turbine:turbine:${Versions.turbineVersion}"
     }
 
     object AndroidTest {

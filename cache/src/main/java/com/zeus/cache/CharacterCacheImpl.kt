@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class CharacterCacheImpl @Inject constructor(
     private val characterDao: CharacterDao,
-    private val preferencesHelper: CachePreferencesHelper
+    private val preferencesHelper: CachePreferencesHelper,
 ) : CharacterCache {
 
     override suspend fun getCharacters(page: Int): List<CharacterEntity> {

@@ -13,7 +13,7 @@ import com.zeus.rickandmorty.R
 @Composable
 fun DetailsAppBar(
     title: String,
-    onBackClicked: () -> Unit
+    onBackClicked: () -> Unit,
 ) {
     TopAppBar(
         title = { Text(text = title) },
@@ -23,10 +23,10 @@ fun DetailsAppBar(
                 content = {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(id = R.string.back)
+                        contentDescription = stringResource(id = R.string.back),
                     )
-                }
+                },
             )
-        }
+        },
     )
 }

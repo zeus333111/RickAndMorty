@@ -27,7 +27,7 @@ internal fun CharacterData.toCharacterEntity(): CharacterEntity {
         origin = this.origin?.locationData.toLocationEntity(),
         location = this.location?.locationData.toLocationEntity(),
         image = this.image ?: "",
-        created = this.created ?: ""
+        created = this.created ?: "",
     )
 }
 
@@ -37,6 +37,6 @@ internal fun LocationData?.toLocationEntity(): LocationEntity {
         name = this?.name ?: "",
         type = this?.type ?: "",
         dimension = this?.dimension ?: "",
-        created = this?.created ?: ""
+        created = this?.created ?: "",
     )
 }

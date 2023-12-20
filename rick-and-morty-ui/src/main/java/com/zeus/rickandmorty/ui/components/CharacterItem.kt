@@ -35,12 +35,12 @@ import com.zeus.domain.models.Character
 fun CharacterItem(
     modifier: Modifier = Modifier,
     item: Character,
-    onItemClicked: (String) -> Unit
+    onItemClicked: (String) -> Unit,
 ) {
     Row(
         modifier = modifier
             .clickable { onItemClicked.invoke(item.id) }
-            .padding(start = 6.dp, top = 12.dp, bottom = 12.dp)
+            .padding(start = 6.dp, top = 12.dp, bottom = 12.dp),
     ) {
         CharacterImageContainer(modifier = Modifier.size(64.dp)) {
             CharacterImage(character = item)
@@ -49,11 +49,11 @@ fun CharacterItem(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.CenterVertically)
+                .align(Alignment.CenterVertically),
         ) {
             Text(
                 text = item.name,
-                style = MaterialTheme.typography.h4
+                style = MaterialTheme.typography.h4,
             )
             CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
                 Text(text = item.species, style = MaterialTheme.typography.caption)
@@ -70,14 +70,14 @@ fun CharacterImage(character: Character?) {
             model = ImageRequest.Builder(LocalContext.current)
                 .data(character?.image)
                 .size(Size.ORIGINAL)
-                .build()
+                .build(),
         )
 
         Image(
             painter = painter,
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxSize(),
         )
     }
 }
@@ -85,7 +85,7 @@ fun CharacterImage(character: Character?) {
 @Composable
 fun CharacterImageContainer(
     modifier: Modifier,
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     Surface(modifier.aspectRatio(1f), RoundedCornerShape(4.dp)) {
         content()
