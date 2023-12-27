@@ -10,6 +10,7 @@ object DomainDep {
         Dependencies.TestDep.coroutinesTest,
         Dependencies.TestDep.mockitoKotlin,
         Dependencies.TestDep.mockitoInline,
-        Dependencies.TestDep.assertJ
+        Dependencies.TestDep.assertJ,
+        Dependencies.TestDep.turbine
     )
 }
