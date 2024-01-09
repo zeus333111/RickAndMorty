@@ -14,30 +14,26 @@ class DetailsViewModel @Inject constructor(
     private val getCharacterUseCase: GetCharacterUseCase,
 ) : BaseViewModel(contextProvider) {
 
-    private val _state = MutableLiveData(DetailsState())
+    private val _state = MutableLiveData<DetailsState>()
     val state: LiveData<DetailsState> = _state
 
     override val coroutineExceptionHandler: CoroutineExceptionHandler =
         CoroutineExceptionHandler { _, throwable ->
             _state.postValue(
-                _state.value?.copy(showError = true, errorMessage = throwable.message),
+                DetailsState.Error(throwable.message),
             )
         }
 
     fun getCharacter(id: String) = launchCoroutineIO {
         _state.postValue(
-            _state.value?.copy(
-                showError = false,
-                isLoading = true,
-            ),
+            DetailsState.Loading,
         )
-        getCharacterUseCase.invoke(id).collect {
-            _state.postValue(
-                _state.value?.copy(
-                    isLoading = false,
-                    character = it,
-                ),
-            )
+        getCharacterUseCase.invoke(id).collect { character ->
+            character?.let {
+                _state.postValue(
+                    DetailsState.GetCharacterSuccess(it),
+                )
+            }
         }
     }
 }

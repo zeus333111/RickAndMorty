@@ -54,4 +54,6 @@ dependencies {
     testImplementation(PresentationDep.Test.mockitoKotlin)
     testImplementation(PresentationDep.Test.mockitoInline)
     testImplementation(PresentationDep.Test.assertJ)
+    testImplementation(PresentationDep.Test.kotlinTest)
+    testImplementation(PresentationDep.Test.archTest)
 }

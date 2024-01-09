@@ -41,6 +41,7 @@ object Dependencies {
         const val junit = "androidx.test.ext:junit:${Versions.androidJunit}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val composeJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
+        const val archTest = "androidx.arch.core:core-testing:${Versions.archTest}"
     }
 
     object DebugDep {

@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.zeus.domain.models.Character
+import com.zeus.presentation.viewmodel.DetailsState
 import com.zeus.presentation.viewmodel.DetailsViewModel
 import com.zeus.rickandmorty.databinding.FragmentDetailsBinding
 import com.zeus.rickandmorty.utils.dateFormatter
@@ -48,14 +49,10 @@ class DetailsFragment : Fragment() {
 
     private fun setupObservers() {
         viewModel.state.observe(viewLifecycleOwner) {
-            if (it.isLoading) {
-                binding.progressBarView.root.visibility = View.VISIBLE
-            } else {
-                binding.progressBarView.root.visibility = View.GONE
-            }
-
-            it.character?.let { character ->
-                setCharacterData(character)
+            when (it) {
+                is DetailsState.GetCharacterSuccess -> setCharacterData(it.character)
+                DetailsState.Loading -> binding.progressBarView.root.visibility = View.VISIBLE
+                else -> binding.progressBarView.root.visibility = View.GONE
             }
         }
     }

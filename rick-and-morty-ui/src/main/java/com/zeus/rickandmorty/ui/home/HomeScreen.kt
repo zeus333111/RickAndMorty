@@ -28,6 +28,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.zeus.domain.models.Character
+import com.zeus.presentation.viewmodel.HomeState
 import com.zeus.presentation.viewmodel.HomeViewModel
 import com.zeus.rickandmorty.R
 import com.zeus.rickandmorty.ui.components.CharacterItem
@@ -40,15 +41,15 @@ fun HomeScreen(
     onItemClicked: (String) -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val state = viewModel.state.observeAsState()
+    val state = viewModel.state.observeAsState(HomeState())
     val scaffoldState = rememberScaffoldState()
 
     LaunchedEffect(true) {
         viewModel.getCharacters(false)
     }
-    LaunchedEffect(key1 = state.value?.showError) {
+    LaunchedEffect(key1 = state.value.showError) {
         delay(5000)
-        viewModel.showError(false)
+        viewModel.dismissError()
     }
 
     Scaffold(
@@ -58,8 +59,8 @@ fun HomeScreen(
         },
         bottomBar = {
             HomeButtonBar(
-                showPrevious = state.value?.showPrevious ?: false,
-                showNext = state.value?.showNext ?: false,
+                showPrevious = state.value.showPrevious,
+                showNext = state.value.showNext,
                 onPreviousPressed = { viewModel.getCharacters(false) },
                 onNextPressed = { viewModel.getCharacters(true) },
             )
@@ -68,13 +69,13 @@ fun HomeScreen(
         HomeContent(
             modifier = Modifier.padding(padding),
             onItemClicked = onItemClicked,
-            isLoading = state.value?.isLoading ?: true,
-            characters = state.value?.characters ?: emptyList(),
+            isLoading = state.value.isLoading,
+            characters = state.value.characters,
         )
         ErrorMessage(
             modifier = Modifier.padding(padding),
-            error = state.value?.errorString ?: "",
-            state.value?.showError ?: false,
+            error = state.value.errorString,
+            state.value.showError,
         )
     }
 }

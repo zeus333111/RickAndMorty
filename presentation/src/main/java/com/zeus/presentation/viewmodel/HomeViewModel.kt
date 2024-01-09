@@ -54,9 +54,9 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun showError(visible: Boolean) = launchCoroutineIO {
+    fun dismissError() = launchCoroutineIO {
         _state.postValue(
-            state.value?.copy(showError = visible, errorString = ""),
+            state.value?.copy(showError = false),
         )
     }
 }

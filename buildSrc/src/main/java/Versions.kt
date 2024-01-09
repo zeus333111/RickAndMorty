@@ -4,7 +4,7 @@ object Versions {
 
     const val compose = "1.5.1"
     const val kotlinVersion = "1.9.0"
-    const val agpVersion = "8.1.4"
+    const val agpVersion = "8.2.0"
 
     //Plugins
     const val androidApplication = agpVersion
@@ -40,6 +40,7 @@ object Versions {
     //Android Test
     const val androidJunit = "1.1.3"
     const val espresso = "3.4.0"
+    const val archTest = "2.1.0"
 
     //OkHttp dependencies
     const val loggingInterceptor = "5.0.0-alpha.5"
@@ -53,8 +54,8 @@ object Versions {
     const val livedata = "1.3.2"
 
     //Coroutines
-    const val coroutineCoreVersion = "1.6.4"
-    const val coroutineAndroidVersion = "1.6.4"
+    const val coroutineCoreVersion = "1.7.3"
+    const val coroutineAndroidVersion = "1.7.3"
 
     //Room
     const val roomVersion = "2.4.3"
