@@ -4,7 +4,7 @@ object Versions {
 
     const val compose = "1.5.1"
     const val kotlinVersion = "1.9.0"
-    const val agpVersion = "8.2.0"
+    const val agpVersion = "8.2.2"
 
     //Plugins
     const val androidApplication = agpVersion
@@ -13,6 +13,8 @@ object Versions {
     const val kapt = kotlinVersion
     const val hilt = "2.48.1"
     const val apollo = "3.6.2"
+    const val retrofit = "2.9.0"
+    const val gson = "2.9.0"
     const val ktlint = "12.0.3"
     const val jvm = kotlinVersion
     const val safeArgs = "2.5.3"

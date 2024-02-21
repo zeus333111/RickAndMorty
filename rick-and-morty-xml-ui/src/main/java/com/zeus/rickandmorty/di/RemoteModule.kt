@@ -4,6 +4,8 @@ import com.zeus.data.repository.CharacterRemote
 import com.zeus.remoteapollo.api.ApiClient
 import com.zeus.remoteapollo.api.RemoteApolloClient
 import com.zeus.remoteapollo.repository.CharacterRemoteImpl
+import com.zeus.remoteretrofit.api.RemoteRetrofitClient
+import com.zeus.remoteretrofit.api.RetrofitServices
 import com.zeus.rickandmorty.BuildConfig
 import dagger.Module
 import dagger.Provides
@@ -18,12 +20,22 @@ object RemoteModule {
     @Provides
     @Singleton
     fun provideGraphQlClient(): RemoteApolloClient {
-        return ApiClient.createClient(BuildConfig.DEBUG, BuildConfig.BASE_URL)
+        return ApiClient.createClient(BuildConfig.DEBUG, BuildConfig.BASE_URL_GRAPHQL)
     }
 
     @Provides
     @Singleton
-    fun provideCharacterRemote(characterRemoteImpl: CharacterRemoteImpl): CharacterRemote {
-        return characterRemoteImpl
+    fun provideRetrofitClient(): RetrofitServices {
+        return RemoteRetrofitClient.create(BuildConfig.DEBUG, BuildConfig.BASE_URL_REST)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCharacterRemote(characterRemoteApolloImpl: CharacterRemoteImpl, characterRemoteRetrofitImpl: com.zeus.remoteretrofit.repository.CharacterRemoteImpl): CharacterRemote {
+        return if (BuildConfig.ENABLE_REST) {
+            characterRemoteRetrofitImpl
+        } else {
+            characterRemoteApolloImpl
+        }
     }
 }

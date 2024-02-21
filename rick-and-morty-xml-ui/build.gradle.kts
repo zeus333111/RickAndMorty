@@ -32,10 +32,14 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/graphql\"")
+            buildConfigField("String", "BASE_URL_GRAPHQL", "\"https://rickandmortyapi.com/graphql\"")
+            buildConfigField("String", "BASE_URL_REST", "\"https://rickandmortyapi.com/api/\"")
+            buildConfigField("boolean", "ENABLE_REST", "true")
         }
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://rickandmortyapi.com/graphql\"")
+            buildConfigField("String", "BASE_URL_GRAPHQL", "\"https://rickandmortyapi.com/graphql\"")
+            buildConfigField("String", "BASE_URL_REST", "\"https://rickandmortyapi.com/api/\"")
+            buildConfigField("boolean", "ENABLE_REST", "true")
         }
     }
 
@@ -63,6 +67,7 @@ dependencies {
     implementation(project(Modules.data))
     implementation(project(Modules.presentation))
     implementation(project(Modules.apollo))
+    implementation(project(Modules.retrofit))
     implementation(project(Modules.cache))
 
     UIXmlDep.core.forEach {

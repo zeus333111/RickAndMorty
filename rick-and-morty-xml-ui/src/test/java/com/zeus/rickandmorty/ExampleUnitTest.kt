@@ -1,4 +1,4 @@
-package com.blackcat.rickandmorty
+package com.zeus.rickandmorty
 
 import junit.framework.TestCase.assertEquals
 import org.junit.Test

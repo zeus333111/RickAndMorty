@@ -42,6 +42,8 @@ object Dependencies {
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val composeJUnit = "androidx.compose.ui:ui-test-junit4:${Versions.compose}"
         const val archTest = "androidx.arch.core:core-testing:${Versions.archTest}"
+        const val navigationTesting = "androidx.navigation:navigation-testing:${Versions.navigation}"
+        const val fragmentTesting = "androidx.fragment:fragment-testing:${Versions.fragment}"
     }
 
     object DebugDep {
@@ -52,6 +54,11 @@ object Dependencies {
     object Apollo {
         const val apolloRuntime = "com.apollographql.apollo3:apollo-runtime:${Versions.apollo}"
 
+    }
+
+    object Retrofit {
+        const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+        const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gson}"
     }
 
     object OkHttpDep {

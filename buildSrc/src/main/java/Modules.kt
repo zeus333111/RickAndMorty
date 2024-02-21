@@ -5,4 +5,5 @@ object Modules {
     const val domain = ":domain"
     const val presentation = ":presentation"
     const val cache = ":cache"
+    const val retrofit = ":remoteRetrofit"
 }

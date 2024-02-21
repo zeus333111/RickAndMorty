@@ -20,6 +20,8 @@ object UIXmlDep {
 
     val androidTest = listOf(
         Dependencies.AndroidTest.junit,
-        Dependencies.AndroidTest.espresso
+        Dependencies.AndroidTest.espresso,
+        Dependencies.AndroidTest.navigationTesting,
+        Dependencies.AndroidTest.fragmentTesting
     )
 }
